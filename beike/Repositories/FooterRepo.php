@@ -13,6 +13,41 @@ namespace Beike\Repositories;
 
 class FooterRepo
 {
+    private const DEFAULT_FOOTER_SETTING = [
+        'services' => [
+            'enable' => false,
+            'items'   => [],
+        ],
+        'content' => [
+            'intro'   => [
+                'logo'           => '',
+                'text'           => [],
+                'social_network' => [],
+            ],
+            'link1'   => [
+                'title' => [],
+                'links' => [],
+            ],
+            'link2'   => [
+                'title' => [],
+                'links' => [],
+            ],
+            'link3'   => [
+                'title' => [],
+                'links' => [],
+            ],
+            'contact' => [
+                'telephone' => '',
+                'address'   => [],
+                'email'     => '',
+            ],
+        ],
+        'bottom' => [
+            'copyright' => [],
+            'image'     => '',
+        ],
+    ];
+
     /**
      * 处理页尾编辑器数据
      *
@@ -24,6 +59,7 @@ class FooterRepo
             $footerSetting = system_setting('base.footer_setting');
         }
 
+        $footerSetting = array_replace_recursive(self::DEFAULT_FOOTER_SETTING, $footerSetting ?: []);
         $content         = $footerSetting['content'] ?? [];
         $contentLinkKeys = ['link1', 'link2', 'link3'];
         foreach ($contentLinkKeys as $contentLinkKey) {
