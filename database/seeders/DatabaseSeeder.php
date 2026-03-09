@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             SettingsSeeder::class,
             ThemeSeeder::class,
             RmaReasonsSeeder::class,
+            LocalSnapshotSeeder::class,
         ]);
     }
 
