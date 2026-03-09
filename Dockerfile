@@ -67,7 +67,8 @@ COPY --from=assets /app/public/build ./public/build
 COPY --from=assets /app/public/install ./public/install
 COPY --from=assets /app/public/mix-manifest.json ./public/mix-manifest.json
 
-RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
+RUN rm -f bootstrap/cache/*.php \
+  && mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
   && chown -R www-data:www-data /app
 
 EXPOSE 10000

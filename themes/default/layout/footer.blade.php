@@ -1,13 +1,17 @@
 <footer>
   @hook('footer.before')
 
+  @php
+    $services = $footer_content['services'] ?? ['enable' => false, 'items' => []];
+  @endphp
+
   <div class="container-fluid">
     @hook('footer.services.before')
 
-    @if ($footer_content['services']['enable'])
+    @if ($services['enable'])
       <div class="services-wrap">
         <div class="row align-items-lg-center">
-          @foreach ($footer_content['services']['items'] as $item)
+          @foreach ($services['items'] as $item)
             <div class="col-lg-3 col-md-6 col-6">
               <div class="service-item my-1">
                 <div class="icon"><img src="{{ image_resize($item['image'], 80, 80) }}" class="img-fluid"></div>

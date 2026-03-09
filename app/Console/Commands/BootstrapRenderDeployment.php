@@ -5,14 +5,20 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use Beike\Admin\Repositories\AdminUserRepo;
+use Database\Seeders\ThemeSeeder;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
 
 class BootstrapRenderDeployment extends Command
 {
+    private const REQUIRED_THEME_SETTINGS = [
+        'menu_setting',
+        'design_setting',
+        'footer_setting',
+    ];
+
     protected $signature = 'app:bootstrap-render';
 
     protected $description = 'Prepare the application for Render before the web server starts';
@@ -26,6 +32,8 @@ class BootstrapRenderDeployment extends Command
         if ($this->shouldSeedDatabase()) {
             $this->info('Seeding initial application data...');
             $this->call('db:seed', ['--force' => true]);
+        } else {
+            $this->repairRequiredSettings();
         }
 
         if (DB::getDriverName() === 'pgsql') {
@@ -69,7 +77,42 @@ class BootstrapRenderDeployment extends Command
             return true;
         }
 
-        return DB::table('settings')->count() === 0;
+        if (DB::table('settings')->count() === 0) {
+            return true;
+        }
+
+        if (! Schema::hasTable('admin_users')) {
+            return true;
+        }
+
+        return DB::table('admin_users')->count() === 0;
+    }
+
+    private function repairRequiredSettings(): void
+    {
+        if (! Schema::hasTable('settings')) {
+            return;
+        }
+
+        DB::table('settings')->updateOrInsert(
+            ['type' => 'system', 'space' => 'base', 'name' => 'locale'],
+            ['value' => 'vi', 'json' => 0]
+        );
+
+        $missingThemeSettings = collect(self::REQUIRED_THEME_SETTINGS)
+            ->filter(fn (string $name) => ! DB::table('settings')
+                ->where('type', 'system')
+                ->where('space', 'base')
+                ->where('name', $name)
+                ->exists())
+            ->values();
+
+        if ($missingThemeSettings->isEmpty()) {
+            return;
+        }
+
+        $this->warn('Repairing missing theme settings: ' . $missingThemeSettings->implode(', '));
+        $this->call('db:seed', ['--class' => ThemeSeeder::class, '--force' => true]);
     }
 
     private function ensureAdminUserExists(): void
