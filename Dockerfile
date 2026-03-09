@@ -24,7 +24,9 @@ COPY webpack.mix.js ./
 COPY resources ./resources
 COPY beike/Installer/assets ./beike/Installer/assets
 
-RUN npm run prod
+RUN mkdir -p /app/public \
+ && ln -s /app/public /public \
+ && npm run prod
 
 FROM php:8.3-cli
 
