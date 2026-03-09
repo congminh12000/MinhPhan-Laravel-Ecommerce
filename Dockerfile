@@ -13,6 +13,19 @@ RUN composer install \
     --ignore-platform-req=ext-pcntl \
     --ignore-platform-req=ext-gd
 
+FROM node:20 AS assets
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY webpack.mix.js ./
+COPY resources ./resources
+COPY beike/Installer/assets ./beike/Installer/assets
+
+RUN npm run prod
+
 FROM php:8.3-cli
 
 WORKDIR /app
@@ -45,6 +58,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY . .
 COPY --from=vendor /app/vendor ./vendor
+COPY --from=assets /app/public/build ./public/build
+COPY --from=assets /app/public/install ./public/install
+COPY --from=assets /app/public/mix-manifest.json ./public/mix-manifest.json
 
 RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
   && chown -R www-data:www-data /app
