@@ -26,7 +26,10 @@ COPY beike/Installer/assets ./beike/Installer/assets
 
 RUN mkdir -p /app/public \
  && ln -s /app/public /public \
- && npm run prod
+ && npm run prod \
+ && MANIFEST_PATH="$(find /app /public -maxdepth 3 -name mix-manifest.json | head -n 1)" \
+ && test -n "$MANIFEST_PATH" \
+ && cp "$MANIFEST_PATH" /app/public/mix-manifest.json
 
 FROM php:8.3-cli
 
