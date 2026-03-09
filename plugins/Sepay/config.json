@@ -1,0 +1,18 @@
+{
+    "code": "sepay",
+    "name": {
+        "zh_cn": "SePay",
+        "en": "SePay"
+    },
+    "description": {
+        "zh_cn": "SePay QR 转账支付，适用于越南商家",
+        "en": "SePay bank transfer payment gateway for Vietnam merchants"
+    },
+    "type": "payment",
+    "version": "v1.0.0",
+    "icon": "https://sepay.vn/assets/img/brand-assets/png/logo-sepay-color-in-white.png",
+    "author": {
+        "name": "SePay integration",
+        "email": "info@sepay.vn"
+    }
+}
