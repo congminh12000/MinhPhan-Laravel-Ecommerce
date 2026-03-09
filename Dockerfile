@@ -8,7 +8,9 @@ RUN composer install \
     --no-interaction \
     --prefer-dist \
     --optimize-autoloader \
-    --no-scripts
+    --no-scripts \
+    --ignore-platform-req=ext-pcntl \
+    --ignore-platform-req=ext-gd
 
 FROM node:20 AS assets
 
