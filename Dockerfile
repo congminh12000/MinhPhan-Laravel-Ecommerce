@@ -42,6 +42,7 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libjpeg62-turbo-dev \
     libonig-dev \
+    libpq-dev \
     libpng-dev \
     libsqlite3-dev \
     libxml2-dev \
@@ -56,6 +57,8 @@ RUN apt-get update && apt-get install -y \
     intl \
     mbstring \
     pcntl \
+    pgsql \
+    pdo_pgsql \
     pdo_sqlite \
     simplexml \
     zip \
