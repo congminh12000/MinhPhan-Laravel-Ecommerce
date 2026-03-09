@@ -1,13 +1,8 @@
 services:
   - type: web
     name: minhphan-laravel-ecommerce
-    runtime: php
+    runtime: docker
     plan: starter
-    buildCommand: |
-      composer install --no-interaction --prefer-dist --optimize-autoloader
-      npm ci
-      npm run prod
-    startCommand: bash scripts/render-start.sh
     envVars:
       - key: APP_ENV
         value: production
