@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: minhphan-laravel-ecommerce
+    runtime: php
+    plan: starter
+    buildCommand: |
+      composer install --no-interaction --prefer-dist --optimize-autoloader
+      npm ci
+      npm run prod
+    startCommand: bash scripts/render-start.sh
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_TIMEZONE
+        value: Asia/Ho_Chi_Minh
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: CACHE_DRIVER
+        value: file
+      - key: SESSION_DRIVER
+        value: file
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: TRUST_HOSTS_ENABLED
+        value: "false"

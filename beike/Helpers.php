@@ -96,14 +96,12 @@ function load_settings()
         return;
     }
 
-    if (app()->environment('testing')) {
-        try {
-            if (! \Illuminate\Support\Facades\Schema::hasTable('settings')) {
-                return;
-            }
-        } catch (\Throwable) {
+    try {
+        if (! \Illuminate\Support\Facades\Schema::hasTable('settings')) {
             return;
         }
+    } catch (\Throwable) {
+        return;
     }
 
     $result = \Beike\Repositories\SettingRepo::getGroupedSettings();
