@@ -9,6 +9,7 @@ RUN composer install \
     --prefer-dist \
     --optimize-autoloader \
     --no-scripts \
+    --ignore-platform-req=php \
     --ignore-platform-req=ext-pcntl \
     --ignore-platform-req=ext-gd
 
