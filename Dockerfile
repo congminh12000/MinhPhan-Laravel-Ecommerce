@@ -13,19 +13,6 @@ RUN composer install \
     --ignore-platform-req=ext-pcntl \
     --ignore-platform-req=ext-gd
 
-FROM node:20 AS assets
-
-WORKDIR /app
-
-COPY package.json ./
-RUN npm install
-
-COPY resources ./resources
-COPY beike ./beike
-COPY webpack.mix.js ./
-COPY public ./public
-RUN npm run prod
-
 FROM php:8.3-cli
 
 WORKDIR /app
@@ -36,6 +23,7 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libonig-dev \
     libpng-dev \
+    libsqlite3-dev \
     libxml2-dev \
     libzip-dev \
     unzip \
@@ -57,8 +45,6 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY . .
 COPY --from=vendor /app/vendor ./vendor
-COPY --from=assets /app/public/build ./public/build
-COPY --from=assets /app/public/mix-manifest.json ./public/mix-manifest.json
 
 RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
   && chown -R www-data:www-data /app
