@@ -38,7 +38,9 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     git \
     libcurl4-openssl-dev \
+    libfreetype6-dev \
     libicu-dev \
+    libjpeg62-turbo-dev \
     libonig-dev \
     libpng-dev \
     libsqlite3-dev \
@@ -46,7 +48,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     unzip \
     zip \
-  && docker-php-ext-configure gd \
+  && docker-php-ext-configure gd --with-freetype --with-jpeg \
   && docker-php-ext-install \
     bcmath \
     curl \
