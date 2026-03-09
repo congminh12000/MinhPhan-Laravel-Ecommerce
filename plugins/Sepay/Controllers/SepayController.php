@@ -32,10 +32,11 @@ class SepayController extends Controller
     public function callback(Request $request): JsonResponse
     {
         $payload = $request->json()->all();
-        Log::info('SePay callback received', $payload);
+        $context = $this->buildCallbackContext($request, $payload);
+        Log::info('SePay callback received', $context);
 
         if ($request->header('X-Secret-Key') !== (string) plugin_setting('sepay.secret_key')) {
-            Log::warning('SePay callback rejected because of invalid secret key');
+            Log::warning('SePay callback rejected because of invalid secret key', $context);
 
             return json_fail(trans('Sepay::common.invalid_secret_key'), [], 403);
         }
@@ -44,7 +45,7 @@ class SepayController extends Controller
         $order = OrderRepo::getOrderByNumber($orderNumber);
 
         if (! $order) {
-            Log::warning('SePay callback received for unknown order', ['order_number' => $orderNumber]);
+            Log::warning('SePay callback received for unknown order', $context);
 
             return json_success(trans('Sepay::common.order_not_found'));
         }
@@ -65,8 +66,8 @@ class SepayController extends Controller
 
         if ($order->status !== StateMachineService::UNPAID) {
             Log::info('SePay callback acknowledged for already processed order', [
-                'order_number' => $order->number,
-                'status'       => $order->status,
+                ...$context,
+                'order_status_before' => $order->status,
             ]);
 
             return json_success(trans('Sepay::common.callback_acknowledged'));
@@ -74,19 +75,25 @@ class SepayController extends Controller
 
         if (! $this->shouldMarkAsPaid($payload)) {
             Log::info('SePay callback did not qualify for paid transition', [
-                'order_number' => $order->number,
-                'payload'      => $payload,
+                ...$context,
+                'order_status_before' => $order->status,
             ]);
 
             return json_success(trans('Sepay::common.callback_acknowledged'));
         }
 
         StateMachineService::getInstance($order)->changeStatus(StateMachineService::PAID);
+        $order->refresh();
 
         OrderPaymentRepo::createOrUpdatePayment($order->id, [
             'transaction_id' => $transactionId,
             'callback'       => $payload,
             'response'       => array_merge($result, ['processed' => true]),
+        ]);
+
+        Log::info('SePay callback marked order as paid', [
+            ...$context,
+            'order_status_after' => $order->status,
         ]);
 
         return json_success(trans('Sepay::common.callback_processed'));
@@ -152,5 +159,20 @@ class SepayController extends Controller
         return data_get($payload, 'notification_type') === 'ORDER_PAID'
             && data_get($payload, 'order.order_status') === 'CAPTURED'
             && data_get($payload, 'transaction.transaction_status') === 'APPROVED';
+    }
+
+    private function buildCallbackContext(Request $request, array $payload): array
+    {
+        return [
+            'callback_path'       => '/' . ltrim($request->path(), '/'),
+            'content_type'        => (string) $request->header('Content-Type'),
+            'has_secret_key'      => filled($request->header('X-Secret-Key')),
+            'notification_type'   => data_get($payload, 'notification_type'),
+            'order_number'        => (string) data_get($payload, 'order.order_invoice_number', ''),
+            'order_status'        => (string) data_get($payload, 'order.order_status', ''),
+            'transaction_id'      => (string) data_get($payload, 'transaction.transaction_id', ''),
+            'transaction_status'  => (string) data_get($payload, 'transaction.transaction_status', ''),
+            'environment'         => (string) plugin_setting('sepay.environment'),
+        ];
     }
 }

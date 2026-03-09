@@ -9,4 +9,6 @@ Route::name('sepay.')
         Route::get('/sepay/return/error', [SepayController::class, 'error'])->name('return.error');
         Route::get('/sepay/return/cancel', [SepayController::class, 'cancel'])->name('return.cancel');
         Route::post('/callback/sepay', [SepayController::class, 'callback'])->name('callback');
+        Route::post('/sepay/ipn', [SepayController::class, 'callback'])->name('ipn');
+        Route::post('/api/sepay/webhook', [SepayController::class, 'callback'])->name('webhook');
     });

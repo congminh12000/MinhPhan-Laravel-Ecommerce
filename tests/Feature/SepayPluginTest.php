@@ -32,6 +32,9 @@ class SepayPluginTest extends TestCase
             Route::get('/sepay/return/error', static fn () => 'ok')->name('sepay.return.error');
             Route::get('/sepay/return/cancel', static fn () => 'ok')->name('sepay.return.cancel');
             Route::get('/orders/{number}/pay', static fn () => 'ok')->name('orders.pay');
+            Route::post('/callback/sepay', [SepayController::class, 'callback'])->name('sepay.callback');
+            Route::post('/sepay/ipn', [SepayController::class, 'callback'])->name('sepay.ipn');
+            Route::post('/api/sepay/webhook', [SepayController::class, 'callback'])->name('sepay.webhook');
         });
     }
 
@@ -63,12 +66,9 @@ class SepayPluginTest extends TestCase
         Notification::fake();
 
         $order = $this->createOrder('SP2001');
-        $request = Request::create('/callback/sepay', 'POST', [], [], [], [
-            'HTTP_X_SECRET_KEY' => 'spsk_test_123456',
-            'CONTENT_TYPE' => 'application/json',
-        ], json_encode($this->validPayload($order->number)));
-
-        $response = app(SepayController::class)->callback($request);
+        $response = $this->postJson('/callback/sepay', $this->validPayload($order->number), [
+            'X-Secret-Key' => 'spsk_test_123456',
+        ]);
 
         $this->assertSame(200, $response->getStatusCode());
         $this->assertDatabaseHas('orders', [
@@ -94,19 +94,13 @@ class SepayPluginTest extends TestCase
 
         $order = $this->createOrder('SP2002');
         $payload = $this->validPayload($order->number);
-        $controller = app(SepayController::class);
 
-        $firstRequest = Request::create('/callback/sepay', 'POST', [], [], [], [
-            'HTTP_X_SECRET_KEY' => 'spsk_test_123456',
-            'CONTENT_TYPE' => 'application/json',
-        ], json_encode($payload));
-        $secondRequest = Request::create('/callback/sepay', 'POST', [], [], [], [
-            'HTTP_X_SECRET_KEY' => 'spsk_test_123456',
-            'CONTENT_TYPE' => 'application/json',
-        ], json_encode($payload));
-
-        $controller->callback($firstRequest);
-        $response = $controller->callback($secondRequest);
+        $this->postJson('/callback/sepay', $payload, [
+            'X-Secret-Key' => 'spsk_test_123456',
+        ]);
+        $response = $this->postJson('/callback/sepay', $payload, [
+            'X-Secret-Key' => 'spsk_test_123456',
+        ]);
 
         $this->assertSame(200, $response->getStatusCode());
         $this->assertSame(1, OrderPayment::query()->where('order_id', $order->id)->count());
@@ -119,12 +113,9 @@ class SepayPluginTest extends TestCase
     public function test_callback_rejects_invalid_secret_key(): void
     {
         $order = $this->createOrder('SP2003');
-        $request = Request::create('/callback/sepay', 'POST', [], [], [], [
-            'HTTP_X_SECRET_KEY' => 'wrong-secret',
-            'CONTENT_TYPE' => 'application/json',
-        ], json_encode($this->validPayload($order->number)));
-
-        $response = app(SepayController::class)->callback($request);
+        $response = $this->postJson('/callback/sepay', $this->validPayload($order->number), [
+            'X-Secret-Key' => 'wrong-secret',
+        ]);
 
         $this->assertSame(403, $response->getStatusCode());
         $this->assertDatabaseHas('orders', [
@@ -150,6 +141,38 @@ class SepayPluginTest extends TestCase
         $this->assertSame([], $data['html_items']);
         $this->assertSame($order->number, $data['order']->number);
         $this->assertSame('success', $data['type']);
+    }
+
+    public function test_ipn_alias_marks_order_paid(): void
+    {
+        Notification::fake();
+
+        $order = $this->createOrder('SP2005');
+        $response = $this->postJson('/sepay/ipn', $this->validPayload($order->number), [
+            'X-Secret-Key' => 'spsk_test_123456',
+        ]);
+
+        $response->assertOk();
+        $this->assertDatabaseHas('orders', [
+            'id' => $order->id,
+            'status' => StateMachineService::PAID,
+        ]);
+    }
+
+    public function test_webhook_alias_marks_order_paid(): void
+    {
+        Notification::fake();
+
+        $order = $this->createOrder('SP2006');
+        $response = $this->postJson('/api/sepay/webhook', $this->validPayload($order->number), [
+            'X-Secret-Key' => 'spsk_test_123456',
+        ]);
+
+        $response->assertOk();
+        $this->assertDatabaseHas('orders', [
+            'id' => $order->id,
+            'status' => StateMachineService::PAID,
+        ]);
     }
 
     private function createOrder(string $number): Order
