@@ -2,11 +2,13 @@
     "code": "flat_shipping",
     "name": {
         "zh_cn": "固定运费",
-        "en": "Flat Rate Shipping"
+        "en": "Flat Rate Shipping",
+        "vi": "Phí vận chuyển cố định"
     },
     "description": {
         "zh_cn": "按订单总额收取固定运费",
-        "en": "Fixed shipping fee by order total"
+        "en": "Fixed shipping fee by order total",
+        "vi": "Tính phí vận chuyển cố định theo tổng giá trị đơn hàng"
     },
     "type": "shipping",
     "version": "v1.0.0",
