@@ -36,8 +36,15 @@ class CurrencyService
         return self::$instance;
     }
 
+    public static function clearInstance(): void
+    {
+        self::$instance = null;
+    }
+
     public function format($amount, $currency, $value = '', $format = true)
     {
+        $currency = normalize_currency_code($currency);
+
         if (empty($this->currencies)) {
             return $amount;
         }
@@ -87,6 +94,9 @@ class CurrencyService
 
     public function convert($value, $from, $to)
     {
+        $from = normalize_currency_code($from);
+        $to   = normalize_currency_code($to);
+
         if (isset($this->currencies[$from])) {
             $from = $this->currencies[$from]->value;
         } else {
@@ -104,7 +114,8 @@ class CurrencyService
 
     public function getRatesFromApi(string $date)
     {
-        $cacheKey = 'currency:rates:' . $date;
+        $baseCurrency = external_currency_code(system_setting('base.currency', 'USD'));
+        $cacheKey     = 'currency:rates:' . $date . ':' . $baseCurrency;
         if ($rates = cache()->get($cacheKey)) {
             return $rates;
         }
@@ -115,10 +126,12 @@ class CurrencyService
             sprintf(
                 'https://v6.exchangerate-api.com/v6/%s/latest/%s',
                 system_setting('base.rate_api_key'),
-                system_setting('base.currency', 'USD')
+                $baseCurrency
             )
         )->json();
-        $rates = $data['conversion_rates'] ?? [];
+        $rates = collect($data['conversion_rates'] ?? [])->mapWithKeys(function ($value, $code) {
+            return [normalize_currency_code($code) => $value];
+        })->all();
         cache()->set($cacheKey, $rates);
 
         return $rates;

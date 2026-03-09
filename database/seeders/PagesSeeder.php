@@ -13,10 +13,12 @@ namespace Database\Seeders;
 
 use Beike\Models\Page;
 use Beike\Models\PageDescription;
+use Database\Seeders\Concerns\SeedsVietnameseLocale;
 use Illuminate\Database\Seeder;
 
 class PagesSeeder extends Seeder
 {
+    use SeedsVietnameseLocale;
     /**
      * Run the database seeds.
      *
@@ -120,7 +122,7 @@ class PagesSeeder extends Seeder
     public function getPageDescriptions()
     {
         $version = config('beike.version');
-        return [
+        $items = [
             [
                 "id" => "55",
 				"page_id" => "18",
@@ -314,5 +316,32 @@ class PagesSeeder extends Seeder
                 "meta_keywords" =>"",
             ]
         ];
+
+        $titleTranslations = [
+            'Distribution information' => 'Thông tin giao hàng',
+            'Privacy policy' => 'Chính sách bảo mật',
+            'Terms of use' => 'Điều khoản sử dụng',
+            'About' => 'Giới thiệu',
+            "Beikeshop {$version} new version released! ! !" => "BeikeShop {$version} ra mắt phiên bản mới",
+            'A new generation of open source cross-border e-commerce system, BeikeShop is launched!' => 'BeikeShop ra mắt: nền tảng thương mại điện tử xuyên biên giới mã nguồn mở thế hệ mới',
+            'BeikeShop multi-language support helps you' => 'Hỗ trợ đa ngôn ngữ của BeikeShop giúp bạn bán hàng thuận lợi hơn',
+            'Performance Tips | How to Build a Lightning-Fast BeikeShop' => 'Mẹo tối ưu hiệu năng | Cách xây dựng BeikeShop tải nhanh',
+        ];
+
+        $summaryTranslations = [
+            'As an important text marketing tool, news blogs are one of the essential functions of e-commerce websites. Blog body content supports HTML common tags, etc.....' => 'Blog tin tức là công cụ nội dung quan trọng cho website thương mại điện tử. Nội dung bài viết hỗ trợ các thẻ HTML thông dụng và dễ tùy biến.',
+        ];
+
+        return $this->appendVietnameseLocaleRows($items, 'en', function (array $clone, array $source) use ($titleTranslations, $summaryTranslations) {
+            $clone['title'] = $titleTranslations[$source['title']] ?? $source['title'];
+            $clone['summary'] = $summaryTranslations[$source['summary']] ?? $source['summary'];
+            $clone['content'] = str_replace(
+                ['Privacy policy', 'Terms of use', 'About', 'Delivery Information'],
+                ['Chính sách bảo mật', 'Điều khoản sử dụng', 'Giới thiệu', 'Thông tin giao hàng'],
+                $source['content']
+            );
+
+            return $clone;
+        });
     }
 }

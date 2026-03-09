@@ -39,11 +39,11 @@ class RmaReasonsSeeder extends Seeder
     private function getRmaReasons(): array
     {
         return [
-            ["name" => '{"en": "Dead On Arrival", "zh_cn": "未收到货"}'],
-            ["name" => '{"en": "Received Wrong Item", "zh_cn": "发错商品"}'],
-            ["name" => '{"en": "Order Error", "zh_cn": "错误下单"}'],
-            ["name" => '{"en": "Faulty, please supply remark", "zh_cn": "商品损坏，请添加备注"}'],
-            ["name" => '{"en": "Other, please supply remark", "zh_cn": "其他，请添加备注"}'],
+            ["name" => '{"en":"Dead On Arrival","zh_cn":"未收到货","vi":"Chưa nhận được hàng"}'],
+            ["name" => '{"en":"Received Wrong Item","zh_cn":"发错商品","vi":"Nhận sai sản phẩm"}'],
+            ["name" => '{"en":"Order Error","zh_cn":"错误下单","vi":"Đặt nhầm đơn"}'],
+            ["name" => '{"en":"Faulty, please supply remark","zh_cn":"商品损坏，请添加备注","vi":"Sản phẩm bị lỗi, vui lòng ghi rõ thêm"}'],
+            ["name" => '{"en":"Other, please supply remark","zh_cn":"其他，请添加备注","vi":"Lý do khác, vui lòng ghi rõ thêm"}'],
         ];
     }
 }

@@ -87,6 +87,13 @@
 @push('add-scripts')
 <script>
   const currencyRate = {{ current_currency_rate() }};
+  const currencyDecimalPlace = {{ current_currency_decimal_place() }};
+  const priceInputPattern = currencyDecimalPlace === 0 ? /[^0-9]/g : /[^0-9.]/g;
+
+  function formatPriceRangeValue(value) {
+    return (value * currencyRate).toFixed(currencyDecimalPlace);
+  }
+
   $(document).ready(function() {
     if (!$('#price-slider').length) {
       return;
@@ -94,7 +101,7 @@
 
     $("#price-slider").slider({
       range: true,
-      step: 0.01,
+      step: currencyDecimalPlace === 0 ? 1 : 0.01,
       min: {{ $filter_data['price']['min'] ?? 0 }},
       max: {{ $filter_data['price']['max'] ?? 0 }},
       values: [{{ $filter_data['price']['select_min'] }}, {{ $filter_data['price']['select_max'] }}],
@@ -102,8 +109,8 @@
         filterProductData();
       },
       slide: function(event, ui) {
-        $('.price-select-min').val((ui.values[0] * currencyRate).toFixed(2));
-        $('.price-select-max').val((ui.values[1] * currencyRate).toFixed(2));
+        $('.price-select-min').val(formatPriceRangeValue(ui.values[0]));
+        $('.price-select-max').val(formatPriceRangeValue(ui.values[1]));
       }
     });
 
@@ -112,7 +119,7 @@
     });
 
     $('.price-select-min, .price-select-max').on('input', function() {
-      this.value = this.value.replace(/[^0-9.]/g, '');
+      this.value = this.value.replace(priceInputPattern, '');
     });
   })
 

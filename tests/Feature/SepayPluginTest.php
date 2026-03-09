@@ -42,7 +42,7 @@ class SepayPluginTest extends TestCase
             'customer_id' => 12,
             'email' => 'buyer@example.com',
             'total' => 100000,
-            'currency_code' => 'VND',
+            'currency_code' => 'VNĐ',
             'status' => StateMachineService::UNPAID,
             'payment_method_code' => 'sepay',
         ]);
@@ -136,6 +136,22 @@ class SepayPluginTest extends TestCase
         ]);
     }
 
+    public function test_success_return_page_renders_order_info_without_missing_html_items(): void
+    {
+        $order = $this->createOrder('SP2004');
+        $request = Request::create('/sepay/return/success', 'GET', [
+            'order_number' => $order->number,
+            'email' => $order->email,
+        ]);
+
+        $response = app(SepayController::class)->success($request);
+        $data = $response->getData();
+
+        $this->assertSame([], $data['html_items']);
+        $this->assertSame($order->number, $data['order']->number);
+        $this->assertSame('success', $data['type']);
+    }
+
     private function createOrder(string $number): Order
     {
         return Order::query()->create([
@@ -150,7 +166,7 @@ class SepayPluginTest extends TestCase
             'telephone' => '0900000000',
             'total' => 100000,
             'locale' => 'en',
-            'currency_code' => 'VND',
+            'currency_code' => 'VNĐ',
             'currency_value' => '1',
             'ip' => '127.0.0.1',
             'user_agent' => 'PHPUnit',

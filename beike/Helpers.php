@@ -95,6 +95,17 @@ function load_settings()
     if (is_installer() || ! file_exists(__DIR__ . '/../storage/installed')) {
         return;
     }
+
+    if (app()->environment('testing')) {
+        try {
+            if (! \Illuminate\Support\Facades\Schema::hasTable('settings')) {
+                return;
+            }
+        } catch (\Throwable) {
+            return;
+        }
+    }
+
     $result = \Beike\Repositories\SettingRepo::getGroupedSettings();
     config(['bk' => $result]);
 }
@@ -332,9 +343,9 @@ function locale(): string
 {
     if (is_admin()) {
         $locales    = collect(locales())->pluck('code');
-        $userLocale = current_user()->locale ?? 'en';
+        $userLocale = current_user()->locale ?? 'vi';
 
-        return ($locales->contains($userLocale)) ? $userLocale : 'en';
+        return ($locales->contains($userLocale)) ? $userLocale : 'vi';
     }
 
     $registerLocale = registry('locale');
@@ -353,10 +364,38 @@ function locale(): string
 function admin_locale(): string
 {
     if (is_admin()) {
-        return current_user()->locale;
+        return current_user()->locale ?: locale();
     }
 
     return locale();
+}
+
+/**
+ * Chuẩn hóa mã tiền tệ nội bộ.
+ */
+function normalize_currency_code(?string $currency): string
+{
+    $currency = trim((string) $currency);
+
+    return $currency === 'VND' ? 'VNĐ' : $currency;
+}
+
+/**
+ * Chuẩn hóa mã tiền tệ cho external services.
+ */
+function external_currency_code(?string $currency): string
+{
+    $currency = normalize_currency_code($currency);
+
+    return $currency === 'VNĐ' ? 'VND' : $currency;
+}
+
+/**
+ * Kiểm tra có phải Việt Nam Đồng hay không, kể cả mã external.
+ */
+function is_vnd_currency(?string $currency): bool
+{
+    return in_array(trim((string) $currency), ['VND', 'VNĐ'], true);
 }
 
 /**
@@ -374,7 +413,7 @@ function currency_format($price, string $currency = '', string $value = '', bool
         $currency = is_admin() ? system_setting('base.currency') : current_currency_code();
     }
 
-    return CurrencyService::getInstance()->format($price, $currency, $value, $format);
+    return CurrencyService::getInstance()->format($price, normalize_currency_code($currency), $value, $format);
 }
 
 /**
@@ -384,9 +423,19 @@ function currency_format($price, string $currency = '', string $value = '', bool
  */
 function current_currency_rate(): float
 {
-    $currency = current_currency_code();
+    $currency = normalize_currency_code(current_currency_code());
 
     return Currency::query()->where('code', $currency)->value('value') ?? 1;
+}
+
+/**
+ * 获取当前货币小数位数
+ */
+function current_currency_decimal_place(): int
+{
+    $currency = Currency::query()->where('code', normalize_currency_code(current_currency_code()))->first();
+
+    return (int) ($currency->decimal_place ?? 2);
 }
 
 /**
@@ -565,10 +614,10 @@ function current_currency_code(): string
 {
     $registerLocale = registry('currency');
     if ($registerLocale) {
-        return $registerLocale;
+        return normalize_currency_code($registerLocale);
     }
 
-    return Session::get('currency') ?? system_setting('base.currency');
+    return normalize_currency_code(Session::get('currency') ?? system_setting('base.currency'));
 }
 
 /**
@@ -578,7 +627,7 @@ function current_currency_code(): string
  */
 function current_currency_id(): string
 {
-    $currencyCode = current_currency_code();
+    $currencyCode = normalize_currency_code(current_currency_code());
     $currency     = \Beike\Models\Currency::query()->where('code', $currencyCode)->first();
 
     return $currency->id ?? 0;

@@ -28,7 +28,7 @@ class Currency extends Base
             $today = date('Y-m-d');
             $data  = CurrencyService::getInstance()->getRatesFromApi($today);
 
-            return $data[$this->code] ?? $this->value;
+            return $data[normalize_currency_code($this->code)] ?? $this->value;
         } catch (\Exception) {
             return $this->value;
         }

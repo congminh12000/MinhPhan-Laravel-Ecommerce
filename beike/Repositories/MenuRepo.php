@@ -27,7 +27,7 @@ class MenuRepo
         }
 
         $locale = locale();
-        $menus  = $menuSetting['menus'];
+        $menus  = is_array($menuSetting['menus'] ?? null) ? $menuSetting['menus'] : [];
 
         foreach ($menus as $index => $menu) {
             $menu['new_window']    = $menu['link']['new_window']        ?? false;

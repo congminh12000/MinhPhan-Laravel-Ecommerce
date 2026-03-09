@@ -84,7 +84,7 @@
 
       data: {
         languages: @json($languages ?? []),
-        settingLocale: @json(system_setting('base.locale') ?? 'zh_cn'),
+        settingLocale: @json(system_setting('base.locale') ?? 'vi'),
 
         dialog: {
           show: false,

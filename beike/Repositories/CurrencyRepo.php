@@ -97,6 +97,13 @@ class CurrencyRepo
      */
     public static function findByCode($code)
     {
+        $code = normalize_currency_code($code);
+
         return self::listEnabled()->where('code', $code)->firstOrFail();
+    }
+
+    public static function flushEnabled(): void
+    {
+        self::$enabledCurrencies = null;
     }
 }

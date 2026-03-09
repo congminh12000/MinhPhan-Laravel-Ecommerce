@@ -95,7 +95,7 @@
 
             <x-admin-form-select title="{{ __('admin/setting.default_currency') }}" name="currency" :value="old('currency', system_setting('base.currency', 'USD'))" :options="$currencies->toArray()" key="code" label="name" />
 
-            <x-admin-form-select title="{{ __('admin/setting.default_language') }}" name="locale" :value="old('locale', system_setting('base.locale', 'zh_cn'))" :options="$languages" key="code" label="name" />
+            <x-admin-form-select title="{{ __('admin/setting.default_language') }}" name="locale" :value="old('locale', system_setting('base.locale', 'vi'))" :options="$languages" key="code" label="name" />
 
             @php
               $weight = array_map(function ($value) {
@@ -560,6 +560,5 @@
     });
   </script>
 @endpush
-
 
 

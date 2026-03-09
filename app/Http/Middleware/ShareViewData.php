@@ -60,7 +60,7 @@ class ShareViewData
             $adminLanguages  = $this->handleAdminLanguages();
             $loggedAdminUser = current_user();
             if ($loggedAdminUser) {
-                $currentLanguage = $loggedAdminUser->locale ?: 'en';
+                $currentLanguage = $loggedAdminUser->locale ?: 'vi';
                 View::share('admin_languages', $adminLanguages);
                 View::share('admin_language', collect($adminLanguages)->where('code', $currentLanguage)->first());
             }

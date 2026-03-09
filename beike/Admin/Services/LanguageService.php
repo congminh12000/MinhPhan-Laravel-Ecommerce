@@ -49,7 +49,7 @@ class LanguageService
         $models = self::$models;
         foreach ($models as $className) {
             $className = "\\Beike\\Models\\$className";
-            $items     = $className::query()->where('locale', system_setting('base.locale', 'en'))->get()->toArray();
+            $items     = $className::query()->where('locale', system_setting('base.locale', 'vi'))->get()->toArray();
             foreach ($items as &$item) {
                 if (isset($item['created_at'])) {
                     $item['created_at'] = now();

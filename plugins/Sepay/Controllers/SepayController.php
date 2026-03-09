@@ -107,14 +107,17 @@ class SepayController extends Controller
             ];
         }
 
-        return view('Sepay::checkout.return', [
+        $data = hook_filter('account.order.show.data', [
             'order'     => $order,
+            'html_items'=> [],
             'retry_url' => $retryUrl,
             'type'      => $type,
             'title'     => $returnData['title'],
             'message'   => $returnData['message'],
             'alert'     => $returnData['alert'],
         ]);
+
+        return view('Sepay::checkout.return', $data);
     }
 
     private function findOrder(Request $request): ?Order
@@ -138,7 +141,7 @@ class SepayController extends Controller
         }
 
         return Order::query()
-            ->with(['orderProducts', 'orderTotals', 'orderHistories'])
+            ->with(['orderProducts', 'orderTotals', 'orderHistories', 'orderShipments'])
             ->where('number', $orderNumber)
             ->where('email', $email)
             ->first();

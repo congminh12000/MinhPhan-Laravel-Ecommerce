@@ -258,7 +258,7 @@ class Http extends PendingRequest
             $locale = admin_locale();
         } catch (Throwable $e) {
             Log::warning('Failed to get admin locale: ' . $e->getMessage());
-            $locale = 'en';
+            $locale = 'vi';
         }
 
         $queryArr = [

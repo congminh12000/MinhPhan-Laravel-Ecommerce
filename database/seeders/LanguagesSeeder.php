@@ -41,20 +41,29 @@ class LanguagesSeeder extends Seeder
         return [
             [
                 "id" => 1,
-                "name" => "中文",
-                "code" => "zh_cn",
-                "locale" => "",
+                "name" => "Tiếng Việt",
+                "code" => "vi",
+                "locale" => "vi_VN",
                 "image" => "catalog/favicon.png",
                 "sort_order" => 1,
                 "status" => 1,
             ],
             [
                 "id" => 2,
+                "name" => "中文",
+                "code" => "zh_cn",
+                "locale" => "zh_CN",
+                "image" => "catalog/favicon.png",
+                "sort_order" => 2,
+                "status" => 1,
+            ],
+            [
+                "id" => 3,
                 "name" => "English",
                 "code" => "en",
-                "locale" => "",
+                "locale" => "en_US",
                 "image" => "catalog/demo/services-icon/3.png",
-                "sort_order" => 1,
+                "sort_order" => 3,
                 "status" => 1,
             ]
         ];

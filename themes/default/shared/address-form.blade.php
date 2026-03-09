@@ -67,6 +67,19 @@
 </template>
 
 <script>
+  const addressDialogDefaultForm = () => ({
+    name: 'Minh Phan',
+    email: 'congminh12000@gmail.com',
+    phone: '0764440302',
+    country_id: @json((int) system_setting('base.country_id')),
+    zipcode: '70000',
+    zone_id: @json((int) system_setting('base.zone_id')),
+    city: 'Ho Chi Minh',
+    address_1: 'Tang Bat Ho',
+    address_2: '',
+    default: false,
+  });
+
   Vue.component('address-dialog', {
   template: '#address-dialog',
   props: {
@@ -81,18 +94,7 @@
       index: null,
       type: 'shipping_address_id',
       shippingRequired: true,
-      form: {
-        name: '',
-        email: '',
-        phone: '',
-        country_id: @json((int) system_setting('base.country_id')),
-        zipcode: '',
-        zone_id: @json((int) system_setting('base.zone_id')),
-        city: '',
-        address_1: '',
-        address_2: '',
-        default: false,
-      },
+      form: addressDialogDefaultForm(),
 
       rules: {
         name: [{
@@ -141,9 +143,7 @@
   methods: {
     editAddress(addresses, type, shippingRequired = true) {
       this.type = type
-      if (addresses) {
-        this.form = addresses
-      }
+      this.form = addresses ? { ...addresses } : addressDialogDefaultForm()
 
       this.countryChange(this.form.country_id);
       this.shippingRequired = shippingRequired;
@@ -164,10 +164,8 @@
     closeAddressDialog() {
       this.$refs['addressForm'].resetFields();
       this.editShow = false
-
-      Object.keys(this.form).forEach(key => this.form[key] = '')
-      this.form.country_id = @json((int) system_setting('base.country_id'));
-      this.form.default = false;
+      this.form = addressDialogDefaultForm()
+      this.countryChange(this.form.country_id);
     },
 
     countryChange(e) {

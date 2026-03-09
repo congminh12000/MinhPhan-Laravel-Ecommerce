@@ -13,12 +13,14 @@ namespace Database\Seeders;
 
 use Beike\Models\Category;
 use Beike\Models\CategoryPath;
+use Database\Seeders\Concerns\SeedsVietnameseLocale;
 use Illuminate\Database\Seeder;
 use Beike\Models\CategoryDescription;
 use Beike\Admin\Services\CategoryService;
 
 class CategoriesSeeder extends Seeder
 {
+    use SeedsVietnameseLocale;
     /**
      * Run the database seeds.
      *
@@ -79,7 +81,7 @@ class CategoriesSeeder extends Seeder
 
     public function getCategoryDescriptions()
     {
-        return [
+        $items = [
             [
                 "id" => 1,
                 "category_id" => 100002,
@@ -401,6 +403,32 @@ class CategoriesSeeder extends Seeder
                 "meta_keywords" => ""
             ]
         ];
+
+        $translations = [
+            'Pad' => 'Máy tính bảng',
+            'Fashion' => 'Thời trang',
+            'Camera' => 'Máy ảnh',
+            'Special' => 'Ưu đãi đặc biệt',
+            'Sports' => 'Thể thao ngoài trời',
+            'Electron' => 'Điện tử',
+            'Tent' => 'Lều cắm trại',
+            'Clothes' => 'Thời trang nam nữ',
+            'Men' => 'Thời trang nam',
+            'Summer Promotion' => 'Ưu đãi mùa hè',
+            'Top' => 'Áo',
+            'Bottom' => 'Quần',
+            'Cotton' => 'Áo bông',
+            'Cotton Pants' => 'Quần bông',
+            'IceBox' => 'Tủ lạnh thông minh',
+            'Electric' => 'Điện gia dụng',
+        ];
+
+        return $this->appendVietnameseLocaleRows($items, 'en', function (array $clone, array $source) use ($translations) {
+            $clone['name'] = $translations[$source['name']] ?? $source['name'];
+            $clone['content'] = $source['content'] ? ($translations[$source['content']] ?? $source['content']) : '';
+
+            return $clone;
+        });
     }
 
 

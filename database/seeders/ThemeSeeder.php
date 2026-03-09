@@ -11,11 +11,13 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\Concerns\SeedsVietnameseLocale;
 use Beike\Repositories\SettingRepo;
 use Illuminate\Database\Seeder;
 
 class ThemeSeeder extends Seeder
 {
+    use SeedsVietnameseLocale;
 
     /**
      * Run the database seeds.
@@ -43,7 +45,7 @@ class ThemeSeeder extends Seeder
      */
     private function getMenuSetting(): array
     {
-        return [
+        return $this->localizeThemeSetting([
             "menus" => [
                 [
                     "isFull" => false,
@@ -742,7 +744,7 @@ class ThemeSeeder extends Seeder
                     "childrenGroup" => []
                 ]
             ]
-        ];
+        ]);
     }
 
     /**
@@ -753,7 +755,7 @@ class ThemeSeeder extends Seeder
      */
     private function getHomeSetting(): array
     {
-        return [
+        return $this->localizeThemeSetting([
             "modules" =>[
                 [
                     "code" =>"img_text_slideshow",
@@ -1083,7 +1085,7 @@ class ThemeSeeder extends Seeder
                     "view_path" =>""
                 ]
             ]
-        ];
+        ]);
     }
 
 
@@ -1092,7 +1094,7 @@ class ThemeSeeder extends Seeder
      */
     private function getFooterSetting(): array
     {
-        return [
+        return $this->localizeThemeSetting([
             "services" => [
                 "enable" => true,
                 "items" => [
@@ -1311,7 +1313,7 @@ class ThemeSeeder extends Seeder
                 ],
                 "image" => "catalog/demo/banner/pay_icons.png"
             ]
-        ];
+        ]);
     }
 
      /**
@@ -1383,5 +1385,63 @@ class ThemeSeeder extends Seeder
                 ]
             ]
         ];
+    }
+
+    private function localizeThemeSetting(array $setting): array
+    {
+        $setting = $this->addVietnameseLocaleToPayload($setting, ['en', 'zh_cn']);
+
+        array_walk_recursive($setting, function (&$value, $key): void {
+            if ($key !== 'vi' || ! is_string($value)) {
+                return;
+            }
+
+            $translations = [
+                'Sports' => 'Thể thao',
+                'leading the fashion' => 'Dẫn đầu xu hướng',
+                'Special offer' => 'Ưu đãi đặc biệt',
+                'Popular products' => 'Sản phẩm nổi bật',
+                'NEW' => 'MỚI',
+                'Fashion' => 'Thời trang',
+                'global purchase' => 'Mua sắm toàn cầu',
+                'recommended' => 'Gợi ý nổi bật',
+                'Digital' => 'Đồ công nghệ',
+                'Big promotion' => 'Khuyến mãi lớn',
+                'Activity of gift' => 'Quà tặng sự kiện',
+                'All three fold' => 'Đồng giá giảm sâu',
+                'Fashion Gala: Up to 80% Off!' => 'Lễ hội thời trang: giảm đến 80%',
+                'New arrivals, trendsetting' => 'Hàng mới lên kệ, bắt trend cực nhanh',
+                'Flash Sale' => 'Flash Sale',
+                'Grab limited offers' => 'Chốt deal giới hạn',
+                '30% Off All Items' => 'Giảm 30% toàn bộ sản phẩm',
+                'Exclusive member deals' => 'Ưu đãi riêng cho thành viên',
+                'Clearance Sale' => 'Xả kho',
+                'Amazing sale now' => 'Ưu đãi cực tốt đang chờ bạn',
+                'Weekend Special' => 'Ưu đãi cuối tuần',
+                'Trendy new arrivals' => 'Hàng mới thời thượng',
+                'Fashion sheet' => 'Điểm nhấn thời trang',
+                'Trendy outfits' => 'Phối đồ hợp mốt',
+                'Promotions' => 'Khuyến mãi',
+                'Fashion items' => 'Sản phẩm thời trang',
+                'Spring Into Style' => 'Làm mới phong cách',
+                'Recommended Brand' => 'Thương hiệu đề xuất',
+                'News Blog' => 'Tin tức & blog',
+                'Material world' => 'Hàng hóa đi khắp nơi',
+                'Multi - warehouse fast delivery' => 'Giao nhanh từ nhiều kho',
+                'Return all' => 'Đổi trả an tâm',
+                'Rest assured shopping return worry' => 'Mua sắm yên tâm, đổi trả dễ dàng',
+                'Delicate service' => 'Dịch vụ chỉn chu',
+                'Exquisite service and after-sales guarantee' => 'Phục vụ tận tình, hậu mãi rõ ràng',
+                'With reduced activity' => 'Ưu đãi theo ngưỡng',
+                'If 500 yuan is exceeded, a reduction of 90 yuan will be given' => 'Mua đủ mức sẽ được giảm thêm ngay tại giỏ hàng',
+                'About us' => 'Về chúng tôi',
+                'Account' => 'Tài khoản',
+                '<p>Chengdu Guangda Network Technology Co., Ltd. is a high-tech enterprise mainly engaged in Internet development. The company was established in August 2014.</p>' => '<p>Công ty TNHH Công nghệ Mạng Guangda Thành Đô là doanh nghiệp công nghệ chuyên về phát triển giải pháp Internet, hoạt động từ tháng 8 năm 2014.</p>',
+            ];
+
+            $value = $translations[$value] ?? $value;
+        });
+
+        return $setting;
     }
 }

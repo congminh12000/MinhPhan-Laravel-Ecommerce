@@ -15,10 +15,12 @@ use Beike\Models\Brand;
 use Beike\Models\Currency;
 use Beike\Models\CustomerGroup;
 use Beike\Models\CustomerGroupDescription;
+use Database\Seeders\Concerns\SeedsVietnameseLocale;
 use Illuminate\Database\Seeder;
 
 class CustomerGroupsSeeder extends Seeder
 {
+    use SeedsVietnameseLocale;
     /**
      * Run the database seeds.
      *
@@ -68,7 +70,7 @@ class CustomerGroupsSeeder extends Seeder
 
     public function getCustomerGroupDescriptions(): array
     {
-        return [
+        $items = [
             [
                 "id" => 1,
                 "customer_group_id" => 1,
@@ -98,5 +100,19 @@ class CustomerGroupsSeeder extends Seeder
                 "description" => "Golden Group",
             ],
         ];
+
+        $translations = [
+            'Silver' => 'Bạc',
+            'Silver Group' => 'Nhóm Bạc',
+            'Golden' => 'Vàng',
+            'Golden Group' => 'Nhóm Vàng',
+        ];
+
+        return $this->appendVietnameseLocaleRows($items, 'en', function (array $clone, array $source) use ($translations) {
+            $clone['name'] = $translations[$source['name']] ?? $source['name'];
+            $clone['description'] = $translations[$source['description']] ?? $source['description'];
+
+            return $clone;
+        });
     }
 }

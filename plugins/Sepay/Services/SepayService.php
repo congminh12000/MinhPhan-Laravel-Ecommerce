@@ -64,7 +64,7 @@ class SepayService extends PaymentService
         $order = $this->order;
 
         return CheckoutBuilder::make()
-            ->currency('VND')
+            ->currency(external_currency_code($order->currency_code))
             ->orderInvoiceNumber((string) $order->number)
             ->orderAmount((int) round((float) $order->total))
             ->operation('PURCHASE')
@@ -110,7 +110,7 @@ class SepayService extends PaymentService
 
     private function guardCurrency(): void
     {
-        if ($this->order->currency_code !== 'VND') {
+        if (! is_vnd_currency($this->order->currency_code)) {
             throw new \Exception(trans('Sepay::common.invalid_currency'));
         }
     }

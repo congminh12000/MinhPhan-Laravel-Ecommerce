@@ -30,14 +30,14 @@ class SetLocaleShopApi
         if (empty($locale)) {
             $locale = $request->get('locale');
         }
-        $locale = $locale ?? 'zh_cn';
+        $locale = $locale ?? 'vi';
 
         $languages = languages()->toArray();
         register('locale', $locale);
         if (in_array($locale, $languages)) {
             App::setLocale($locale);
         } else {
-            App::setLocale('en');
+            App::setLocale('vi');
         }
 
         return $next($request);

@@ -19,10 +19,12 @@ use Beike\Models\AttributeGroupDescription;
 use Beike\Models\AttributeValue;
 use Beike\Models\AttributeValueDescription;
 use Beike\Models\ProductAttribute;
+use Database\Seeders\Concerns\SeedsVietnameseLocale;
 use Illuminate\Database\Seeder;
 
 class AttributesSeeder extends Seeder
 {
+    use SeedsVietnameseLocale;
     /**
      * Run the database seeds.
      *
@@ -110,7 +112,7 @@ class AttributesSeeder extends Seeder
 
     private function getGroupDescriptions(): array
     {
-        return [
+        $items = [
             ["attribute_group_id" => 1, "locale" => "zh_cn", "name" => "默认"],
             ["attribute_group_id" => 1, "locale" => "en", "name" => "Default"],
             ["attribute_group_id" => 2, "locale" => "zh_cn", "name" => "衣服"],
@@ -120,6 +122,19 @@ class AttributesSeeder extends Seeder
             ["attribute_group_id" => 4, "locale" => "zh_cn", "name" => "数码"],
             ["attribute_group_id" => 4, "locale" => "en", "name" => "Digital"]
         ];
+
+        $translations = [
+            'Default' => 'Mặc định',
+            'Clothing' => 'Quần áo',
+            'Outdoor sport' => 'Thể thao ngoài trời',
+            'Digital' => 'Đồ công nghệ',
+        ];
+
+        return $this->appendVietnameseLocaleRows($items, 'en', function (array $clone, array $source) use ($translations) {
+            $clone['name'] = $translations[$source['name']] ?? $source['name'];
+
+            return $clone;
+        });
     }
 
 
@@ -138,7 +153,7 @@ class AttributesSeeder extends Seeder
 
     private function getAttributeDescriptions(): array
     {
-        return [
+        $items = [
             ["attribute_id" => 1, "locale" => "zh_cn", "name" => "功能"],
             ["attribute_id" => 1, "locale" => "en", "name" => "Features"],
             ["attribute_id" => 2, "locale" => "zh_cn", "name" => "面料"],
@@ -152,6 +167,20 @@ class AttributesSeeder extends Seeder
             ["attribute_id" => 6, "locale" => "zh_cn", "name" => "内存"],
             ["attribute_id" => 6, "locale" => "en", "name" => "Memory"]
         ];
+
+        $translations = [
+            'Features' => 'Tính năng',
+            'Fabric' => 'Chất liệu',
+            'Style' => 'Kiểu dáng',
+            'Cushioning' => 'Đệm êm',
+            'Memory' => 'Bộ nhớ',
+        ];
+
+        return $this->appendVietnameseLocaleRows($items, 'en', function (array $clone, array $source) use ($translations) {
+            $clone['name'] = $translations[$source['name']] ?? $source['name'];
+
+            return $clone;
+        });
     }
 
 
@@ -187,7 +216,7 @@ class AttributesSeeder extends Seeder
 
     private function getAttributeValueDescriptions(): array
     {
-        return [
+        $items = [
             ["attribute_value_id" => 1, "locale" => "zh_cn", "name" => "棉"],
             ["attribute_value_id" => 1, "locale" => "en", "name" => "Cotton"],
             ["attribute_value_id" => 2, "locale" => "zh_cn", "name" => "麻"],
@@ -235,6 +264,32 @@ class AttributesSeeder extends Seeder
             ["attribute_value_id" => 23, "locale" => "zh_cn", "name" => "DDR4"],
             ["attribute_value_id" => 23, "locale" => "en", "name" => "DDR4"],
         ];
+
+        $translations = [
+            'Cotton' => 'Cotton',
+            'Numb' => 'Vải lanh',
+            'Silk' => 'Lụa',
+            'Hair' => 'Len',
+            'Chemical fiber' => 'Sợi tổng hợp',
+            'Round neck' => 'Cổ tròn',
+            'Collarless' => 'Không cổ',
+            'Short sleeve' => 'Tay ngắn',
+            'T-shirt' => 'Áo thun',
+            'Water proof' => 'Chống nước',
+            'keep warm' => 'Giữ ấm',
+            'Sun protection' => 'Chống nắng',
+            'Zoom Air Cushion' => 'Đệm khí Zoom',
+            'Max Air Cushion' => 'Đệm khí Max',
+            'Boost cushioning material' => 'Chất liệu đệm Boost',
+            'Lightstrike Technology' => 'Công nghệ Lightstrike',
+            'Fuel Cell Technology' => 'Công nghệ FuelCell',
+        ];
+
+        return $this->appendVietnameseLocaleRows($items, 'en', function (array $clone, array $source) use ($translations) {
+            $clone['name'] = $translations[$source['name']] ?? $source['name'];
+
+            return $clone;
+        });
     }
 
 

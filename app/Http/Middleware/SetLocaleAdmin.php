@@ -17,11 +17,11 @@ class SetLocaleAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        $currentLocale = current_user()->locale ?? 'zh_cn';
+        $currentLocale = current_user()->locale ?? 'vi';
         if (in_array($currentLocale, admin_languages())) {
             App::setLocale($currentLocale);
         } else {
-            App::setLocale('en');
+            App::setLocale('vi');
         }
 
         return $next($request);

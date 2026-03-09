@@ -9,7 +9,7 @@ class Bootstrap
     public function boot(): void
     {
         add_hook_filter('repo.plugin.payment_methods', function ($paymentMethods) {
-            if (current_currency_code() === 'VND') {
+            if (is_vnd_currency(current_currency_code())) {
                 return $paymentMethods;
             }
 
