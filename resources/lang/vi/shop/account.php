@@ -1,0 +1,25 @@
+<?php
+
+return array_replace_recursive(require resource_path('lang/en/shop/account.php'), [
+    'index' => 'Tài khoản',
+    'revise_info' => 'Cập nhật thông tin',
+    'collect' => 'Yêu thích',
+    'coupon' => 'Mã giảm giá',
+    'my_order' => 'Đơn hàng của tôi',
+    'orders' => 'Tất cả đơn hàng',
+    'pending_payment' => 'Chờ thanh toán',
+    'pending_send' => 'Chưa giao',
+    'pending_receipt' => 'Đang giao',
+    'after_sales' => 'Đổi trả',
+    'no_order' => 'Bạn chưa có đơn hàng nào.',
+    'to_buy' => 'Đi mua sắm',
+    'order_number' => 'Mã đơn hàng',
+    'order_time' => 'Thời gian đặt hàng',
+    'state' => 'Trạng thái',
+    'amount' => 'Số tiền',
+    'check_details' => 'Xem chi tiết',
+    'items' => 'sản phẩm',
+    'verify_code_expired' => 'Mã xác thực đã hết hạn sau 10 phút, vui lòng thử lại.',
+    'verify_code_error' => 'Mã xác thực không đúng!',
+    'account_not_exist' => 'Tài khoản không tồn tại!',
+]);
