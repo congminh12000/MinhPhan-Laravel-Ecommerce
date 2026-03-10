@@ -81,7 +81,7 @@
     <div class="container-fluid navbar-expand-lg">
       @hookwrapper('header.menu.logo')
       <div class="logo"><a href="{{ shop_route('home.index') }}">
-          <img src="{{ image_origin(system_setting('base.logo')) }}" class="img-fluid" alt="{{ system_setting('base.meta_title', 'BeikeShop开源好用的跨境电商系统') }}"></a>
+          <img src="{{ image_origin(system_setting('base.logo')) }}" class="img-fluid" alt="{{ system_setting('base.meta_title') ?: 'MinhPhan Commerce' }}"></a>
       </div>
       @endhookwrapper
       <div class="menu-wrap">
@@ -144,7 +144,7 @@
         </div>
       </div>
       <div class="center"><a href="{{ shop_route('home.index') }}">
-          <img src="{{ image_origin(system_setting('base.logo')) }}" class="img-fluid" alt="{{ system_setting('base.meta_title', 'BeikeShop开源好用的跨境电商系统') }}"></a>
+          <img src="{{ image_origin(system_setting('base.logo')) }}" class="img-fluid" alt="{{ system_setting('base.meta_title') ?: 'MinhPhan Commerce' }}"></a>
       </div>
       <div class="right">
         <a href="{{ shop_route('account.index') }}" class="nav-link mb-account-icon">

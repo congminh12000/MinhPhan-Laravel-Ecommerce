@@ -201,7 +201,7 @@
             "value": "230",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:55"
         },
         {
             "id": 2,
@@ -211,7 +211,7 @@
             "value": "vi",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:55"
         },
         {
             "id": 3,
@@ -251,7 +251,7 @@
             "value": "admin",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:55"
         },
         {
             "id": 7,
@@ -261,7 +261,7 @@
             "value": "1",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:56"
         },
         {
             "id": 8,
@@ -271,7 +271,7 @@
             "value": "payment",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:56"
         },
         {
             "id": 9,
@@ -281,7 +281,7 @@
             "value": "VNĐ",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:55"
         },
         {
             "id": 10,
@@ -291,7 +291,7 @@
             "value": "3780",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:55"
         },
         {
             "id": 11,
@@ -388,40 +388,40 @@
             "type": "system",
             "space": "base",
             "name": "logo",
-            "value": "catalog/logo.png",
+            "value": "upload/avatar/tStv8tZpHilZpOnMLwy0AsUPLzRcjyDfbg51eDyW.png",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:55"
         },
         {
             "id": 21,
             "type": "system",
             "space": "base",
             "name": "placeholder",
-            "value": "catalog/placeholder.png",
+            "value": "upload/avatar/zazRoHGDMnLSvjBrOYPzNpsOvi4NHALrdZtflDje.png",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:55"
         },
         {
             "id": 22,
             "type": "system",
             "space": "base",
             "name": "favicon",
-            "value": "catalog/favicon.png",
+            "value": "upload/avatar/Qd3ZZ4sufcc6h3Wnf8HFXqCCYpvLx2PYAPQO59M3.png",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:55"
         },
         {
             "id": 23,
             "type": "system",
             "space": "base",
             "name": "meta_title",
-            "value": "Nền tảng thương mại điện tử mã nguồn mở dễ dùng cho bán hàng xuyên biên giới",
+            "value": "MinhPhan Commerce",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:15:47"
         },
         {
             "id": 24,
@@ -431,17 +431,17 @@
             "value": "MinhPhan là nền tảng xây dựng website thương mại điện tử mã nguồn mở phát triển trên Laravel. Hệ thống hỗ trợ quản lý sản phẩm, đơn hàng, khách hàng, thanh toán, vận chuyển và vận hành cửa hàng trên một giao diện thống nhất.",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-10 02:47:54"
+            "updated_at": "2026-03-10 03:11:55"
         },
         {
             "id": 25,
             "type": "system",
             "space": "base",
             "name": "meta_keywords",
-            "value": "thương mại điện tử mã nguồn mở, website bán hàng, ecommerce Laravel, bán hàng xuyên biên giới, nền tảng storefront",
+            "value": "MinhPhan Commerce, ecommerce, Laravel, Railway, SePay",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:15:47"
         },
         {
             "id": 26,
@@ -451,7 +451,7 @@
             "value": "028-xxxxxxxx",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:55"
         },
         {
             "id": 27,
@@ -461,7 +461,7 @@
             "value": "congminh12000@gmail.com",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-10 02:49:18"
+            "updated_at": "2026-03-10 03:11:55"
         },
         {
             "id": 28,
@@ -491,7 +491,7 @@
             "value": "1",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:55"
         },
         {
             "id": 33,
@@ -511,7 +511,7 @@
             "value": "",
             "json": 0,
             "created_at": "2026-03-09 15:14:56",
-            "updated_at": "2026-03-09 15:14:56"
+            "updated_at": "2026-03-10 03:11:56"
         },
         {
             "id": 36,
@@ -538,10 +538,10 @@
             "type": "system",
             "space": "base",
             "name": "footer_setting",
-            "value": "{\"services\":{\"enable\":true,\"items\":[{\"image\":\"catalog\\/demo\\/services-icon\\/4.png\",\"title\":{\"en\":\"Material world\",\"zh_cn\":\"\\u7269\\u884c\\u5929\\u4e0b\",\"vi\":\"H\\u00e0ng h\\u00f3a \\u0111i kh\\u1eafp n\\u01a1i\"},\"sub_title\":{\"en\":\"Multi - warehouse fast delivery\",\"zh_cn\":\"\\u591a\\u4ed3\\u76f4\\u53d1 \\u6781\\u901f\\u914d\\u9001\\u591a\\u4ed3\\u76f4\\u53d1 \\u6781\\u901f\\u914d\\u9001\",\"vi\":\"Giao nhanh t\\u1eeb nhi\\u1ec1u kho\"},\"show\":false},{\"image\":\"catalog\\/demo\\/services-icon\\/3.png\",\"title\":{\"en\":\"Return all\",\"zh_cn\":\"\\u9000\\u6362\\u65e0\\u5fe7\",\"vi\":\"\\u0110\\u1ed5i tr\\u1ea3 an t\\u00e2m\"},\"sub_title\":{\"en\":\"Rest assured shopping return worry\",\"zh_cn\":\"\\u653e\\u5fc3\\u8d2d\\u7269 \\u9000\\u8fd8\\u65e0\\u5fe7\\u653e\\u5fc3\\u8d2d\\u7269 \\u9000\\u8fd8\\u65e0\\u5fe7\",\"vi\":\"Mua s\\u1eafm y\\u00ean t\\u00e2m, \\u0111\\u1ed5i tr\\u1ea3 d\\u1ec5 d\\u00e0ng\"},\"show\":false},{\"image\":\"catalog\\/demo\\/services-icon\\/1.png\",\"title\":{\"en\":\"Delicate service\",\"zh_cn\":\"\\u7cbe\\u81f4\\u670d\\u52a1\",\"vi\":\"D\\u1ecbch v\\u1ee5 ch\\u1ec9n chu\"},\"sub_title\":{\"en\":\"Exquisite service and after-sales guarantee\",\"zh_cn\":\"\\u7cbe\\u81f4\\u670d\\u52a1 \\u552e\\u540e\\u4fdd\\u969c\\u7cbe\\u81f4\\u670d\\u52a1 \\u552e\\u540e\\u4fdd\\u969c\",\"vi\":\"Ph\\u1ee5c v\\u1ee5 t\\u1eadn t\\u00ecnh, h\\u1eadu m\\u00e3i r\\u00f5 r\\u00e0ng\"},\"show\":false},{\"image\":\"catalog\\/demo\\/services-icon\\/2.png\",\"title\":{\"en\":\"With reduced activity\",\"zh_cn\":\"\\u6ee1\\u51cf\\u6d3b\\u52a8\",\"vi\":\"\\u01afu \\u0111\\u00e3i theo ng\\u01b0\\u1ee1ng\"},\"sub_title\":{\"en\":\"If 500 yuan is exceeded, a reduction of 90 yuan will be given\",\"zh_cn\":\"\\u6ee1500\\u5143\\u7acb\\u51cf90\\uff0c\\u65b0\\u7528\\u6237\\u7acb\\u51cf200\",\"vi\":\"Mua \\u0111\\u1ee7 m\\u1ee9c s\\u1ebd \\u0111\\u01b0\\u1ee3c gi\\u1ea3m th\\u00eam ngay t\\u1ea1i gi\\u1ecf h\\u00e0ng\"},\"show\":true}]},\"content\":{\"intro\":{\"logo\":\"catalog\\/logo.png\",\"text\":{\"en\":\"<p>MinhPhan is a high-tech enterprise mainly engaged in Internet development. The company was established in August 2014.<\\/p>\",\"zh_cn\":\"<p style=\\\"line-height: 1.4;\\\"><strong>\\u6210\\u90fd\\u5149\\u5927\\u7f51\\u7edc\\u79d1\\u6280\\u6709\\u9650\\u516c\\u53f8<\\/strong><\\/p>\\n<p style=\\\"line-height: 1.4;\\\">\\u662f\\u4e00\\u5bb6\\u4e13\\u4e1a\\u4e92\\u8054\\u7f51\\u5f00\\u53d1\\u7684\\u9ad8\\u79d1\\u6280\\u4f01\\u4e1a\\uff0c\\u516c\\u53f8\\u6210\\u7acb\\u4e8e2014\\u5e748\\u6708\\u3002<\\/p>\\n<p style=\\\"line-height: 1.4;\\\">\\u516c\\u53f8\\u4ee5\\u4e3a\\u5ba2\\u6237\\u521b\\u9020\\u4ef7\\u503c\\u4e3a\\u6838\\u5fc3\\u4ef7\\u503c\\u89c2\\uff0c\\u5e2e\\u52a9\\u4e2d\\u5c0f\\u4f01\\u4e1a\\u5229\\u7528\\u4e92\\u8054\\u7f51\\u5de5\\u5177\\u63d0\\u5347\\u4ea7\\u54c1\\u9500\\u552e\\u3002<\\/p>\",\"vi\":\"<p>C\\u00f4ng ty TNHH C\\u00f4ng ngh\\u1ec7 M\\u1ea1ng MinhPhan Th\\u00e0nh \\u0110\\u00f4 l\\u00e0 doanh nghi\\u1ec7p c\\u00f4ng ngh\\u1ec7 chuy\\u00ean v\\u1ec1 ph\\u00e1t tri\\u1ec3n gi\\u1ea3i ph\\u00e1p Internet, ho\\u1ea1t \\u0111\\u1ed9ng t\\u1eeb th\\u00e1ng 8 n\\u0103m 2014.<\\/p>\"},\"social_network\":[{\"image\":\"\\/catalog\\/demo\\/social\\/twitter.png\",\"link\":\"\\/\",\"show\":false},{\"image\":\"\\/catalog\\/demo\\/social\\/facebook.png\",\"link\":\"\\/\",\"show\":false},{\"image\":\"\\/catalog\\/demo\\/social\\/youtube.png\",\"link\":\"\\/\",\"show\":false},{\"image\":\"\\/catalog\\/demo\\/social\\/instagram.png\",\"link\":\"\\/\",\"show\":false},{\"image\":\"\\/catalog\\/demo\\/social\\/pinterest.png\",\"link\":\"\\/\",\"show\":false}]},\"link1\":{\"title\":{\"en\":\"About us\",\"zh_cn\":\"\\u5173\\u4e8e\\u6211\\u4eec\",\"vi\":\"V\\u1ec1 ch\\u00fang t\\u00f4i\"},\"links\":[{\"link\":\"\",\"type\":\"page\",\"value\":21,\"text\":{\"en\":\"About us\",\"zh_cn\":\"\\u5173\\u4e8e\\u6211\\u4eec\",\"vi\":\"V\\u1ec1 ch\\u00fang t\\u00f4i\"}},{\"type\":\"page\",\"value\":18,\"text\":[],\"link\":\"\"},{\"type\":\"page\",\"value\":12,\"text\":[],\"link\":\"\"},{\"type\":\"static\",\"value\":\"account.order.index\",\"text\":{\"en\":\"\",\"zh_cn\":\"\",\"vi\":\"\"},\"link\":\"\"}]},\"link2\":{\"title\":{\"en\":\"Account\",\"zh_cn\":\"\\u4f1a\\u5458\\u4e2d\\u5fc3\",\"vi\":\"T\\u00e0i kho\\u1ea3n\"},\"links\":[{\"type\":\"static\",\"value\":\"account.index\",\"text\":[],\"link\":\"\"},{\"type\":\"static\",\"value\":\"account.order.index\",\"text\":[],\"link\":\"\"},{\"type\":\"static\",\"value\":\"account.wishlist.index\",\"text\":[],\"link\":\"\"},{\"type\":\"static\",\"value\":\"brands.index\",\"text\":{\"en\":\"\",\"zh_cn\":\"\",\"vi\":\"\"},\"link\":\"\"}]},\"link3\":{\"title\":{\"en\":\"Other\",\"zh_cn\":\"\\u5176\\u4ed6\",\"vi\":\"Other\"},\"links\":[{\"type\":\"static\",\"value\":\"brands.index\",\"text\":[],\"link\":\"\"},{\"type\":\"static\",\"value\":\"account.index\",\"text\":{\"en\":\"\",\"zh_cn\":\"\",\"vi\":\"\"},\"link\":\"\"},{\"type\":\"page\",\"value\":20,\"text\":{\"en\":\"\",\"zh_cn\":\"\",\"vi\":\"\"},\"link\":\"\"},{\"type\":\"page\",\"value\":21,\"text\":{\"en\":\"\",\"zh_cn\":\"\",\"vi\":\"\"},\"link\":\"\"}]},\"contact\":{\"telephone\":\"028-xxxxxxxx\",\"address\":{\"en\":\"Ho Chi Minh City, Vietnam\",\"zh_cn\":\"\\u60a8\\u7684\\u516c\\u53f8\\u5730\\u5740\",\"vi\":\"Ho Chi Minh City, Vietnam\"},\"email\":\"congminh12000@gmail.com\"}},\"bottom\":{\"copyright\":{\"en\":\"<div>MinhPhan &copy; 2026<\\/div>\",\"zh_cn\":\"<div>\\u6210\\u90fd\\u5149\\u5927\\u7f51\\u7edc\\u79d1\\u6280 &copy; 2026<\\/div>\",\"vi\":\"<div>MinhPhan &copy; 2026<\\/div>\"},\"image\":\"catalog\\/demo\\/banner\\/pay_icons.png\"}}",
+            "value": "{\"services\":{\"enable\":true,\"items\":[{\"image\":\"catalog\\/demo\\/services-icon\\/4.png\",\"title\":{\"vi\":\"H\\u00e0ng h\\u00f3a \\u0111i kh\\u1eafp n\\u01a1i\",\"en\":\"Material world\"},\"sub_title\":{\"vi\":\"Giao nhanh t\\u1eeb nhi\\u1ec1u kho\",\"en\":\"Multi - warehouse fast delivery\"},\"show\":false},{\"image\":\"catalog\\/demo\\/services-icon\\/3.png\",\"title\":{\"vi\":\"\\u0110\\u1ed5i tr\\u1ea3 an t\\u00e2m\",\"en\":\"Return all\"},\"sub_title\":{\"vi\":\"Mua s\\u1eafm y\\u00ean t\\u00e2m, \\u0111\\u1ed5i tr\\u1ea3 d\\u1ec5 d\\u00e0ng\",\"en\":\"Rest assured shopping return worry\"},\"show\":false},{\"image\":\"catalog\\/demo\\/services-icon\\/1.png\",\"title\":{\"vi\":\"D\\u1ecbch v\\u1ee5 ch\\u1ec9n chu\",\"en\":\"Delicate service\"},\"sub_title\":{\"vi\":\"Ph\\u1ee5c v\\u1ee5 t\\u1eadn t\\u00ecnh, h\\u1eadu m\\u00e3i r\\u00f5 r\\u00e0ng\",\"en\":\"Exquisite service and after-sales guarantee\"},\"show\":false},{\"image\":\"catalog\\/demo\\/services-icon\\/2.png\",\"title\":{\"vi\":\"\\u01afu \\u0111\\u00e3i theo ng\\u01b0\\u1ee1ng\",\"en\":\"With reduced activity\"},\"sub_title\":{\"vi\":\"Mua \\u0111\\u1ee7 m\\u1ee9c s\\u1ebd \\u0111\\u01b0\\u1ee3c gi\\u1ea3m th\\u00eam ngay t\\u1ea1i gi\\u1ecf h\\u00e0ng\",\"en\":\"If 500 yuan is exceeded, a reduction of 90 yuan will be given\"},\"show\":true}]},\"content\":{\"intro\":{\"logo\":\"\\/catalog\\/ChatGPT_Image_Mar_10__2026__09_53_46_AM-removebg-preview-1.png\",\"text\":{\"vi\":\"<p>C&ocirc;ng ty TNHH C&ocirc;ng ngh\\u1ec7 MinhPhan l&agrave; doanh nghi\\u1ec7p c&ocirc;ng ngh\\u1ec7 chuy&ecirc;n v\\u1ec1 ph&aacute;t tri\\u1ec3n gi\\u1ea3i ph&aacute;p Internet, ho\\u1ea1t \\u0111\\u1ed9ng t\\u1eeb th&aacute;ng 8 n\\u0103m 2014.<\\/p>\",\"en\":\"<p>MinhPhan is a high-tech enterprise mainly engaged in Internet development. The company was established in August 2014.<\\/p>\"},\"social_network\":[{\"image\":\"\\/catalog\\/demo\\/social\\/twitter.png\",\"link\":\"https:\\/\\/www.facebook.com\\/phan.c.minh.5\\/\",\"show\":false},{\"image\":\"\\/catalog\\/demo\\/social\\/facebook.png\",\"link\":\"https:\\/\\/www.facebook.com\\/phan.c.minh.5\\/\",\"show\":false},{\"image\":\"\\/catalog\\/demo\\/social\\/youtube.png\",\"link\":\"https:\\/\\/www.facebook.com\\/phan.c.minh.5\\/\",\"show\":false},{\"image\":\"\\/catalog\\/demo\\/social\\/instagram.png\",\"link\":\"https:\\/\\/www.facebook.com\\/phan.c.minh.5\\/\",\"show\":false},{\"image\":\"\\/catalog\\/demo\\/social\\/pinterest.png\",\"link\":\"https:\\/\\/www.facebook.com\\/phan.c.minh.5\\/\",\"show\":true}]},\"link1\":{\"title\":{\"vi\":\"V\\u1ec1 ch\\u00fang t\\u00f4i\",\"en\":\"About us\"},\"links\":[{\"link\":\"\",\"type\":\"page\",\"value\":21,\"text\":{\"en\":\"About us\",\"zh_cn\":\"\\u5173\\u4e8e\\u6211\\u4eec\",\"vi\":\"V\\u1ec1 ch\\u00fang t\\u00f4i\"}},{\"type\":\"page\",\"value\":18,\"text\":[],\"link\":\"\"},{\"type\":\"page\",\"value\":12,\"text\":[],\"link\":\"\"},{\"type\":\"static\",\"value\":\"account.order.index\",\"text\":{\"en\":\"\",\"zh_cn\":\"\",\"vi\":\"\"},\"link\":\"\"}]},\"link2\":{\"title\":{\"vi\":\"T\\u00e0i kho\\u1ea3n\",\"en\":\"Account\"},\"links\":[{\"type\":\"static\",\"value\":\"account.index\",\"text\":[],\"link\":\"\"},{\"type\":\"static\",\"value\":\"account.order.index\",\"text\":[],\"link\":\"\"},{\"type\":\"static\",\"value\":\"account.wishlist.index\",\"text\":[],\"link\":\"\"},{\"type\":\"static\",\"value\":\"brands.index\",\"text\":{\"en\":\"\",\"zh_cn\":\"\",\"vi\":\"\"},\"link\":\"\"}]},\"link3\":{\"title\":{\"vi\":\"Other\",\"en\":\"Other\"},\"links\":[{\"type\":\"static\",\"value\":\"brands.index\",\"text\":[],\"link\":\"\"},{\"type\":\"static\",\"value\":\"account.index\",\"text\":{\"en\":\"\",\"zh_cn\":\"\",\"vi\":\"\"},\"link\":\"\"},{\"type\":\"page\",\"value\":20,\"text\":{\"en\":\"\",\"zh_cn\":\"\",\"vi\":\"\"},\"link\":\"\"},{\"type\":\"page\",\"value\":21,\"text\":{\"en\":\"\",\"zh_cn\":\"\",\"vi\":\"\"},\"link\":\"\"}]},\"contact\":{\"telephone\":\"076 444 0302\",\"address\":{\"vi\":\"Ho Chi Minh City, Vietnam\",\"en\":\"Ho Chi Minh City, Vietnam\"},\"email\":\"congminh12000@gmail.com\"}},\"bottom\":{\"copyright\":{\"vi\":\"<div>MinhPhan &copy; 2026<\\/div>\",\"en\":\"<div>MinhPhan &copy; 2026<\\/div>\"},\"image\":\"catalog\\/demo\\/banner\\/pay_icons.png\"}}",
             "json": 1,
             "created_at": "2026-03-09 15:19:28",
-            "updated_at": "2026-03-10 02:47:54"
+            "updated_at": "2026-03-10 03:16:13"
         },
         {
             "id": 40,
@@ -612,6 +612,196 @@
             "json": 0,
             "created_at": "2026-03-09 15:54:33",
             "updated_at": "2026-03-09 15:54:33"
+        },
+        {
+            "id": 47,
+            "type": "system",
+            "space": "base",
+            "name": "product_per_page",
+            "value": "20",
+            "json": 0,
+            "created_at": "2026-03-10 02:59:43",
+            "updated_at": "2026-03-10 03:11:55"
+        },
+        {
+            "id": 48,
+            "type": "system",
+            "space": "base",
+            "name": "license_code",
+            "value": "",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:05",
+            "updated_at": "2026-03-10 03:11:55"
+        },
+        {
+            "id": 49,
+            "type": "system",
+            "space": "base",
+            "name": "guide",
+            "value": "1",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:05",
+            "updated_at": "2026-03-10 03:11:55"
+        },
+        {
+            "id": 50,
+            "type": "system",
+            "space": "base",
+            "name": "maintenance_mode",
+            "value": "0",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:05",
+            "updated_at": "2026-03-10 03:11:55"
+        },
+        {
+            "id": 51,
+            "type": "system",
+            "space": "base",
+            "name": "weight",
+            "value": "kg",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:55"
+        },
+        {
+            "id": 52,
+            "type": "system",
+            "space": "base",
+            "name": "cdn_url",
+            "value": "",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:55"
+        },
+        {
+            "id": 53,
+            "type": "system",
+            "space": "base",
+            "name": "product_image_origin_width",
+            "value": "800",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:55"
+        },
+        {
+            "id": 54,
+            "type": "system",
+            "space": "base",
+            "name": "product_image_origin_height",
+            "value": "800",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:55"
+        },
+        {
+            "id": 55,
+            "type": "system",
+            "space": "base",
+            "name": "head_code",
+            "value": "",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:55"
+        },
+        {
+            "id": 56,
+            "type": "system",
+            "space": "base",
+            "name": "admin_logo",
+            "value": "upload/avatar/DTK4oGvClbHewU9vz5A90N0Jh3HBweFcBlFITdJf.png",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:55"
+        },
+        {
+            "id": 57,
+            "type": "system",
+            "space": "base",
+            "name": "express_company",
+            "value": "",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:56"
+        },
+        {
+            "id": 58,
+            "type": "system",
+            "space": "base",
+            "name": "use_queue",
+            "value": "0",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:56"
+        },
+        {
+            "id": 59,
+            "type": "system",
+            "space": "base",
+            "name": "mail_engine",
+            "value": "",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:56"
+        },
+        {
+            "id": 60,
+            "type": "system",
+            "space": "base",
+            "name": "show_price_after_login",
+            "value": "0",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:56"
+        },
+        {
+            "id": 61,
+            "type": "system",
+            "space": "base",
+            "name": "guest_checkout",
+            "value": "1",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:56"
+        },
+        {
+            "id": 62,
+            "type": "system",
+            "space": "base",
+            "name": "customer_approved",
+            "value": "0",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:56"
+        },
+        {
+            "id": 63,
+            "type": "system",
+            "space": "base",
+            "name": "order_auto_cancel",
+            "value": "",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:56"
+        },
+        {
+            "id": 64,
+            "type": "system",
+            "space": "base",
+            "name": "order_auto_complete",
+            "value": "",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:56"
+        },
+        {
+            "id": 65,
+            "type": "system",
+            "space": "base",
+            "name": "tab",
+            "value": "tab-image",
+            "json": 0,
+            "created_at": "2026-03-10 03:08:06",
+            "updated_at": "2026-03-10 03:11:56"
         }
     ],
     "brands": [
@@ -2360,7 +2550,7 @@
             "title": "Tin tức",
             "summary": "Danh mục tổng hợp các bài viết cập nhật mới nhất về nền tảng, vận hành cửa hàng và các chủ đề đáng chú ý.",
             "meta_title": "Tin tức",
-            "meta_description": "Các bài viết mới nhất về MinhPhan, xu hướng vận hành và cập nhật hệ thống.",
+            "meta_description": "Các bài viết mới nhất về BeikeShop, xu hướng vận hành và cập nhật hệ thống.",
             "meta_keywords": "tin tức, beikeshop, cập nhật",
             "created_at": "2026-03-09 15:12:07",
             "updated_at": "2026-03-09 16:01:07"

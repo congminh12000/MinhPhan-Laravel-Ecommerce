@@ -1,3 +1,9 @@
+@php
+  $storefrontBrand = system_setting('base.meta_title') ?: 'MinhPhan Commerce';
+  $supportedElementLocales = ['en', 'es', 'fr', 'de', 'it', 'ru', 'pl', 'tr', 'ja', 'ko', 'pt'];
+  $shopElementLocale = in_array(locale(), $supportedElementLocales, true) ? locale() : 'en';
+@endphp
+
 <!doctype html>
 <html lang="{{ locale() }}">
   <head>
@@ -8,14 +14,14 @@
     <base href="{{ $shop_base_url }}">
 
     <!-- Title and Meta Description -->
-    <title>@yield('title', system_setting('base.meta_title', 'BeikeShop开源好用的跨境电商系统'))</title>
+    <title>@yield('title', $storefrontBrand)</title>
     <meta name="keywords" content="@yield('keywords', system_setting('base.meta_keywords'))">
     <meta name="description" content="@yield('description', system_setting('base.meta_description'))">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:site_name" content="{{ system_setting('base.meta_title', 'BeikeShop') }}">
+    <meta property="og:site_name" content="{{ $storefrontBrand }}">
     <meta property="og:url" content="{{ request()->url() }}">
-    <meta property="og:title" content="@yield('title', system_setting('base.meta_title', 'BeikeShop开源好用的跨境电商系统'))">
+    <meta property="og:title" content="@yield('title', $storefrontBrand)">
     <meta property="og:type" content="@yield('og_type', 'website')">
     <meta property="og:description" content="@yield('description', system_setting('base.meta_description'))">
     <meta property="og:image" content="@yield('og_image', image_origin(system_setting('base.logo')))">
@@ -25,7 +31,7 @@
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('title', system_setting('base.meta_title', 'BeikeShop开源好用的跨境电商系统'))">
+    <meta name="twitter:title" content="@yield('title', $storefrontBrand)">
     <meta name="twitter:description" content="@yield('description', system_setting('base.meta_description'))">
 
     <!-- Generator Meta -->
@@ -79,14 +85,16 @@
     }
 
     // 如果页面使用了ElementUI，且当前语言不是中文，则加载对应的语言包
-    @if (locale() != 'zh_cn')
+    @if ($shopElementLocale !== 'zh_cn')
     if (typeof ELEMENT !== 'undefined') {
-        const elLocale = '{{ asset('vendor/element-ui/language/'.locale().'.js') }}';
+        const elLocale = '{{ asset('vendor/element-ui/language/'.$shopElementLocale.'.js') }}';
         document.write("<script src='" + elLocale + "'><\/script>")
 
         $(function () {
           setTimeout(() => {
-            ELEMENT.locale(ELEMENT.lang['{{ locale() }}'])
+            if (typeof ELEMENT.lang !== 'undefined' && typeof ELEMENT.lang['{{ $shopElementLocale }}'] !== 'undefined') {
+              ELEMENT.locale(ELEMENT.lang['{{ $shopElementLocale }}'])
+            }
           }, 0);
         })
       }
