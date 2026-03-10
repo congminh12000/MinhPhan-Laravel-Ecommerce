@@ -2,6 +2,9 @@
 <html lang="{{ admin_locale() }}">
 
 <head>
+  @php
+    $elementLocale = in_array(locale(), ['de', 'en', 'es', 'fr', 'id', 'it', 'ja', 'ko', 'ru', 'zh_hk']) ? locale() : 'en';
+  @endphp
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
   <base href="{{ $admin_base_url }}">
@@ -17,12 +20,12 @@
   <link href="{{ mix('/build/beike/admin/css/bootstrap.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('vendor/element-ui/index.css') }}">
   @if (locale() != 'zh_cn')
-    <script src="{{ asset('vendor/element-ui/language/' . locale() . '.js') }}"></script>
+    <script src="{{ asset('vendor/element-ui/language/' . $elementLocale . '.js') }}"></script>
   @endif
   <link rel="shortcut icon" href="{{ image_origin(system_setting('base.favicon')) }}">
   <link href="{{ mix('build/beike/admin/css/app.css') }}" rel="stylesheet">
   <script src="{{ mix('build/beike/admin/js/app.js') }}"></script>
-  <title>BeikeShop - @yield('title')</title>
+  <title>MinhPhan Admin - @yield('title')</title>
   @stack('header')
 
   <script>
@@ -59,7 +62,9 @@
         </div>
 
         <p class="text-center text-secondary mt-5" id="copyright-text">
-            <a href="https://beikeshop.com/" class="ms-2" target="_blank">BeikeShop</a>
+            <span class="fw-semibold">MinhPhan Admin</span>
+            <span class="mx-2">·</span>
+            <a href="https://beikeshop.com/" class="ms-2" target="_blank" rel="noopener">BeikeShop</a>
             v{{ config('beike.version') }}({{ config('beike.build') }})
             &copy; {{ date('Y') }} All Rights Reserved</p>
 
@@ -73,7 +78,9 @@
     @hook('admin.master.script.before')
 
     @if (locale() != 'zh_cn')
-      ELEMENT.locale(ELEMENT.lang['{{ locale() }}'])
+      if (window.ELEMENT?.lang?.['{{ $elementLocale }}']) {
+        ELEMENT.locale(ELEMENT.lang['{{ $elementLocale }}'])
+      }
     @endif
     const lang = {
       file_manager: '{{ __('admin/file_manager.file_manager') }}',

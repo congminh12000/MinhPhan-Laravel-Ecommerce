@@ -110,7 +110,7 @@
               <div class="help-text font-size-12 lh-base">{{ __('admin/setting.admin_name_info') }}</div>
             </x-admin-form-input>
 
-            <x-admin-form-input name="product_per_page" title="{{ __('admin/setting.product_per_page') }}" required value="{{ old('product_per_page', system_setting('base.product_per_page', 20)) }}">
+            <x-admin-form-input name="product_per_page" title="{{ __('admin/setting.product_per_page') }}" required value="{{ old('product_per_page', system_setting('base.product_per_page') ?: 20) }}">
             </x-admin-form-input>
 
             <x-admin-form-input name="cdn_url" title="{{ __('admin/setting.cdn_url') }}" value="{{ old('cdn_url', system_setting('base.cdn_url', '')) }}">
@@ -560,5 +560,4 @@
     });
   </script>
 @endpush
-
 

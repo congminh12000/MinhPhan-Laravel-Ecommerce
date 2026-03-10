@@ -84,7 +84,7 @@ return array_replace_recursive(require resource_path('lang/en/admin/common.php')
     'countries_index' => 'Quốc gia / khu vực',
     'zones_index' => 'Tỉnh / bang',
     'update_nav' => 'Cập nhật',
-    'update_title' => 'BeikeShop đã có phiên bản mới, bạn có muốn cập nhật ngay không',
+    'update_title' => 'Đã có phiên bản nền tảng mới, bạn có muốn cập nhật ngay không',
     'update_new_version' => 'Phiên bản mới nhất',
     'update_old_version' => 'Phiên bản hiện tại',
     'update_date' => 'Ngày cập nhật',

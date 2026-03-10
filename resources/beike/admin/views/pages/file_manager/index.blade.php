@@ -21,13 +21,16 @@
   <script>
     // 获取 iframe 父级 html 标签的 lang 属性
     const htmlLang = parent.document.getElementsByTagName('html')[0].getAttribute('lang');
+    const elementLang = ['de', 'en', 'es', 'fr', 'id', 'it', 'ja', 'ko', 'ru', 'zh_hk'].includes(htmlLang) ? htmlLang : 'en';
 
     if (htmlLang != 'zh_cn') {
       const js = document.createElement('script');
-      js.src = `vendor/element-ui/language/${htmlLang}.js`;
+      js.src = `vendor/element-ui/language/${elementLang}.js`;
       document.head.appendChild(js);
       js.onload = () => {
-        ELEMENT.locale(ELEMENT.lang[htmlLang])
+        if (window.ELEMENT?.lang?.[elementLang]) {
+          ELEMENT.locale(ELEMENT.lang[elementLang])
+        }
       }
     }
 

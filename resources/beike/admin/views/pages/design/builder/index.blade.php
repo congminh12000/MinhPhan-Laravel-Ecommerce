@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+  @php
+    $elementLocale = in_array(locale(), ['de', 'en', 'es', 'fr', 'id', 'it', 'ja', 'ko', 'ru', 'zh_hk']) ? locale() : 'en';
+  @endphp
   <meta charset="UTF-8">
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -21,13 +24,15 @@
   <script src="{{ asset('vendor/element-ui/index.js') }}"></script>
   <link rel="stylesheet" href="{{ asset('vendor/element-ui/index-blue.css') }}">
   @if (locale() != 'zh_cn')
-    <script src="{{ asset('vendor/element-ui/language/' . locale() . '.js') }}"></script>
+    <script src="{{ asset('vendor/element-ui/language/' . $elementLocale . '.js') }}"></script>
   @endif
   <link rel="stylesheet" type="text/css" href="{{ asset('/build/beike/admin/css/design.css') }}">
   @stack('header')
   <script>
     @if (locale() != 'zh_cn')
-      ELEMENT.locale(ELEMENT.lang['{{ locale() }}'])
+      if (window.ELEMENT?.lang?.['{{ $elementLocale }}']) {
+        ELEMENT.locale(ELEMENT.lang['{{ $elementLocale }}'])
+      }
     @endif
     const lang = {
       file_manager: '{{ __('admin/file_manager.file_manager') }}',
