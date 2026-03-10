@@ -1,3 +1,26 @@
 <?php
 
-return require resource_path('lang/en/mail.php');
+return [
+    'order_success'           => 'Đơn hàng đã được gửi thành công',
+    'order_update'            => 'Cập nhật trạng thái đơn hàng',
+    'order_success_info'      => 'Đơn hàng của bạn đã được tạo thành công, dưới đây là thông tin chi tiết đơn hàng',
+    'not_oneself'             => 'Nếu đây không phải thao tác của bạn, vui lòng bỏ qua email này.',
+    'customer_name'           => 'Xin chào :name,',
+    'sincerely'               => 'Trân trọng',
+    'team'                    => 'đội ngũ',
+    'order_update_status'     => 'Trạng thái đơn hàng :number của bạn đã được cập nhật thành',
+    'welcome_register'        => 'Chào mừng bạn đăng ký',
+    'new_register'            => 'Tài khoản mới đã được đăng ký',
+    'customer_name_line'      => 'Tên khách hàng',
+    'register_end'            => 'Bạn đã hoàn tất đăng ký, vui lòng nhấn nút bên dưới để quay lại cửa hàng.',
+    'btn_buy_now'             => 'Mua ngay',
+    'retrieve_password_title' => 'Khôi phục mật khẩu',
+    'retrieve_password_text'  => 'Bạn đang thực hiện yêu cầu đặt lại mật khẩu, vui lòng nhấn nút bên dưới để hoàn tất.',
+    'retrieve_password_btn'   => 'Đặt lại mật khẩu',
+    'rma_success'             => 'Yêu cầu hậu mãi đã được gửi thành công',
+    'rma_success_admin'       => 'Có một yêu cầu hậu mãi mới',
+    'admin_name'              => 'Xin chào quản trị viên,',
+    'rma_product'             => 'Thông tin sản phẩm',
+    'new_order'               => 'Có đơn hàng mới',
+    'order_update_admin'      => 'Đơn hàng :number đã được cập nhật trạng thái thành',
+];

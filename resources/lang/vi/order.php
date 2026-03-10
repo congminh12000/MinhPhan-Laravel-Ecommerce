@@ -1,3 +1,32 @@
 <?php
 
-return require resource_path('lang/en/order.php');
+return array_replace_recursive(require resource_path('lang/en/order.php'), [
+    'status'             => 'Trạng thái',
+    'status_format'      => 'Trạng thái',
+    'order_shipments'    => 'Thông tin vận chuyển',
+    'address_info'       => 'Thông tin địa chỉ',
+    'shipping_address'   => 'Địa chỉ giao hàng',
+    'payment_address'    => 'Địa chỉ thanh toán',
+    'order_status'       => 'Trạng thái đơn hàng',
+    'product_sub_price'  => 'Tạm tính',
+    'current_status'     => 'Hiện tại',
+    'change_to_status'   => 'Chuyển sang',
+    'comment'            => 'Ghi chú',
+    'submit_status'      => 'Cập nhật trạng thái',
+    'product_info'       => 'Thông tin sản phẩm',
+    'product_name'       => 'Tên sản phẩm',
+    'product_price'      => 'Đơn giá',
+    'product_quantity'   => 'Số lượng',
+    'product_sku'        => 'SKU',
+    'action_history'     => 'Lịch sử thao tác',
+    'history_status'     => 'Trạng thái',
+    'history_comment'    => 'Ghi chú',
+    'history_created_at' => 'Thời gian tạo',
+    'unpaid'             => 'Chưa thanh toán',
+    'paid'               => 'Đã thanh toán',
+    'shipped'            => 'Đã giao vận',
+    'completed'          => 'Hoàn tất',
+    'cancelled'          => 'Đã hủy',
+    'order_comment'      => 'Ghi chú của khách hàng',
+    'order_all'          => 'Tất cả',
+]);

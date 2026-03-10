@@ -69,7 +69,7 @@
 <script>
   const addressDialogDefaultForm = () => ({
     name: 'Minh Phan',
-    email: 'congminh12000@gmail.com',
+    email: 'minhphanwp@gmail.com',
     phone: '0764440302',
     country_id: @json((int) system_setting('base.country_id')),
     zipcode: '70000',
